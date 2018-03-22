@@ -5,13 +5,19 @@ import { Middleware, NestMiddleware, ExpressMiddleware } from '@nestjs/common'
 const { Builder, Nuxt } = require('nuxt')
 
 @Middleware()
-export class LoggerMiddleware implements NestMiddleware {
-  async resolve(name: string): Promise<ExpressMiddleware> {
+export class NuxtMiddleware implements NestMiddleware {
+  async resolve (name: string): Promise<ExpressMiddleware> {
+
     const nuxt = await new Nuxt(config)
+    config.dev = !(process.env.NODE_ENV === 'production')
+
+    if (config.dev) {
+      new Builder(nuxt).build()
+    }
     return async (req, res, next) => {
       await nuxt.render(req, res, next)
-      console.log(`[${name}] Request...`) // [ApplicationModule] Request...
-      next()
+      // console.log(`[${name}] Request...`) // [ApplicationModule] Request...
+      // next()
     }
- }
+  }
 }

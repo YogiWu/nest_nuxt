@@ -9,7 +9,7 @@ import {
   Component,
   Prop,
   Vue
-} from "nuxt-property-decorator"
+} from 'nuxt-property-decorator'
 
 @Component({})
 export default class Card extends Vue {

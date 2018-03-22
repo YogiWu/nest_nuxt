@@ -3,13 +3,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setPeople(state, people) {
+  setPeople (state, people) {
     state.people = people
   }
 }
 
 export const actions = {
-  async nuxtServerInit({ commit }, { app }) {
+  async nuxtServerInit ({ commit }, { app }) {
     const people = await app.$axios.$get(
       './random-data.json'
     )

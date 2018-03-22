@@ -11,9 +11,9 @@
 import {
   Component,
   Vue
-} from "nuxt-property-decorator"
-import { State } from "vuex-class"
-import Card from "@app/components/Card.vue"
+} from 'nuxt-property-decorator'
+import { State } from 'vuex-class'
+import Card from '../components/Card.vue'
 
 @Component({
   components: {
